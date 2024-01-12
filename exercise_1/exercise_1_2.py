@@ -1,3 +1,5 @@
+import random
+
 numberList = []
 stringList = []
 
@@ -16,15 +18,7 @@ def fill_list(list, numeric):
 fill_list(numberList, 1)
 fill_list(stringList, 0)
 
-
-
-
-#while(len(numberList) < 10):
-#    userInput = input("Enter a number: ")
-#    if(userInput.isnumeric()):
-#        numberList.append(userInput)
-#    else:
-#        print(f'{userInput} is not a valid number.')
+for i in range(len(numberList)):
+    numberList[i] = random.randint(0, 999)
 
 print(numberList)
-print(stringList)
