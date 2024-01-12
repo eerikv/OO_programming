@@ -1,7 +1,9 @@
 # File name: Exercise1_2.py
 # Author: Eerik Vainio
-# Description: Asks values from user to fill a list of integers and a list of strings, and prints out the lists.
-# Changes the values in the number list to random ones, and prints out that list.
+# Description:  1. Asks values from user to fill a list of integers and a list
+#               of strings, and prints out the lists.
+#               2. Changes the values in the number list to random ones,
+#               and prints out that list.
 
 import random
 
