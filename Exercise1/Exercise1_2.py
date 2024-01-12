@@ -11,12 +11,14 @@ import random
 number_list = []
 string_list = []
 
-# Ask for user input, and append the input to the corresponding list. Loop for 10 times.
+# Ask for user input, and append the input to the corresponding list.
+# Loop for 10 times.
 def fill_list(list, numeric):
     while(len(list) < 10):
         if (numeric == 1):
             user_input = input(f'Enter a number ({len(list)}/10): ')
-            # Append the input to the list if it's numeric, print out a message if it is not.
+            # Append the input to the list if it's numeric,
+            # print out a message if it is not.
             if(user_input.isnumeric()):
                 list.append(int(user_input))
             else:
