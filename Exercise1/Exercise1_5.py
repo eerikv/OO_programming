@@ -1,10 +1,12 @@
-# File name:    Exercise1_4.py
+# File name:    Exercise1_5.py
 # Author:       Eerik Vainio
 # Description:  Asks user to input numbers. User can exit the program by
 #               entering 0. Once the user exits the program, print
-#               out the number of negative numbers.
+#               out the number of negative numbers. Also checks for even
+#               numbers.
 
 negative_numbers = 0
+even_numbers = 0
 
 # Check if the input is numeric, or if it has a dash as the first
 # character, check if the rest of the characters are numbers.
@@ -16,6 +18,11 @@ def check_valid_input(input):
 # check if the first character is a dash, and the rest are numbers.
 def check_negative(input):
     if(len(input) > 1 and input[0] == "-"):
+        return True
+
+# Check if the input is an even number by using modulo.
+def check_even(input):
+    if((int(input[-1]) % 2) == 0):
         return True
 
 # Call check_valid_input to determine correct input,
@@ -35,4 +42,9 @@ while(True):
         if(check_negative(user_input)):
             negative_numbers += 1
 
+# Check for even numbers
+        if(check_even(user_input)):
+            even_numbers += 1
+
 print(f'Negative numbers: {negative_numbers}')
+print(f'Even numbers: {even_numbers}')

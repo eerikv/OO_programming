@@ -1,5 +1,5 @@
-# File name: Exercise1_3.py
-# Author: Eerik Vainio
+# File name:    Exercise1_3.py
+# Author:       Eerik Vainio
 # Description:  1. Asks values from user to fill a list of integers and a list
 #               of strings, and prints out the lists.
 #               2. Changes the values in the number list to random ones,
