@@ -1,4 +1,4 @@
-# File name:    Exercise1_7.py
+# File name:    Exercise1_8.py
 # Author:       Eerik Vainio
 # Description:  A simple game of rock, paper, scissors.
 
