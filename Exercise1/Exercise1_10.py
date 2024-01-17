@@ -33,6 +33,7 @@ while(True):
 
     # Check if the user wants to exit the program.
     if(int(user_input) == 3):
+        print("Quitting...")
         break
 
     # Inputs 1 and 2
@@ -56,7 +57,7 @@ while(True):
 
             while(True):
                 input_number = input("number: ")
-                if(input_number.isnumeric()):
+                if(check_number(input_number)):
                     break
                 elif(len(input_number) == 0):
                     print("no number")
@@ -64,3 +65,4 @@ while(True):
                     print(f'"{input_number}" is not a valid number.')
             
             phonebook[input_name] = input_number
+            print("Ok!")
