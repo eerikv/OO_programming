@@ -1,6 +1,7 @@
 # File name:    Exercise2_10.py
 # Author:       Eerik Vainio
-# Description:  
+# Description:  A program that outputs all movies of a specific genre from
+#               a list of movies.
 
 class Movie:
     def __init__(self, name: str, director: str, genre: str, year: int):
