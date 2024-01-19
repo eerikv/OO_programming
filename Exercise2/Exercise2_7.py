@@ -3,7 +3,7 @@
 # Description:  A class for a book, which can store information on the book.
 
 class Book:
-    def __init__(self, name, author, genre, year):
+    def __init__(self, name: str, author: str, genre: str, year: int):
         self.name = name
         self.author = author
         self.genre = genre
