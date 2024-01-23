@@ -1,4 +1,4 @@
-# File name:    Exercise3_2.py
+# File name:    Exercise3_3.py
 # Author:       Eerik Vainio
 # Description:  A lunchcard class which has functionality for depositing money,
 #               and buying different priced meals.
