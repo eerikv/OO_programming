@@ -1,6 +1,8 @@
 # File name:    Exercise3_5.py
 # Author:       Eerik Vainio
-# Description:  
+# Description:  A credit card program. User can deposit or subtract
+#               funds from their card, and use a payment terminal to
+#               buy different lunches.
 
 class LunchCard:
     def __init__(self, balance: float):
@@ -98,52 +100,7 @@ class PaymentTerminal:
 #You may use the following code to test your function:
 
 if __name__ == "__main__":
-    #Part1
-    """ card = LunchCard(10)
-    print("Balance", card.balance)
-    result = card.subtract_from_balance(8)
-    print("Payment successful:", result)
-    print("Balance", card.balance)
-    result = card.subtract_from_balance(4)
-    print("Payment successful:", result)
-    print("Balance", card.balance) """
-
-    #Part2
-    """ exactum = PaymentTerminal()
-
-    change = exactum.eat_ordinary(10)
-    print("The change returned was", change)
-
-    change = exactum.eat_ordinary(5.9)
-    print("The change returned was", change)
-
-    change = exactum.eat_luxury(5.9)
-    print("The change returned was", change)
-
-    print("Funds available at the terminal:", exactum.funds)
-    print("Ordinary lunches sold:", exactum.ordinaries)
-    print("Luxury lunches sold:", exactum.luxuries) """
-
-    #Part 3
-    """ exactum = PaymentTerminal()
-
-    change = exactum.eat_ordinary(10)
-    print("The change returned was", change)
-
-    card = LunchCard(7)
-
-    result = exactum.eat_luxury_lunchcard(card)
-    print("Payment successful:", result)
-    result = exactum.eat_luxury_lunchcard(card)
-    print("Payment successful:", result)
-    result = exactum.eat_ordinary_lunchcard(card)
-    print("Payment successful:", result)
-
-    print("Funds available at the terminal:", exactum.funds)
-    print("Regular lunches sold:", exactum.ordinaries)
-    print("Special lunches sold:", exactum.luxuries) """
-
-    #Part4
+    
     exactum = PaymentTerminal()
 
     card = LunchCard(2)

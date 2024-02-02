@@ -1,6 +1,8 @@
 # File name:    Exercise3_4.py
 # Author:       Eerik Vainio
-# Description:  
+# Description:  The program takes in examinees and their exam points.
+#               Creates a new list with examinees, who passed a given
+#               threshold.
 
 class ExamSubmission:
     def __init__(self, examinee: str, points: int):
