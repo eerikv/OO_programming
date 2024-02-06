@@ -4,18 +4,18 @@
 #               length.
 
 class Recording:
-    def __init__(self, _length: int):
-        self._length = _length
+    def __init__(self, __length: int):
+        self.__length = __length
 
-    # Getter method for _length
+    # Getter method for __length
     @property
     def length(self):
-        return self._length
+        return self.__length
     
-    # Setter method for _length
+    # Setter method for __length
     @length.setter
     def length(self, l):
-        self._length = l
+        self.__length = l
 
 the_wall = Recording(43)
 print(the_wall.length)
