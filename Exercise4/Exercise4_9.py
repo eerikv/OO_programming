@@ -50,7 +50,7 @@ def list_most_points(data, n):
         print_player(player)
 
 def list_most_goals(data, n):
-    sorted_players = sorted(data, key=lambda x: (x['goals'], -x['games']))[:n]
+    sorted_players = sorted(data, key=lambda x: (-x['goals'], -x['games']))[:n]
     for player in sorted_players:
         print_player(player)
 
@@ -67,28 +67,28 @@ while True:
     print("5 players from country")
     print("6 most points")
     print("7 most goals")
-    command = input("command: ")
+    userInput = input("command: ")
     
-    if command == "0":
+    if userInput == "0":
         break
-    elif command == "1":
+    elif userInput == "1":
         name = input("name: ")
         search_player(data, name)
-    elif command == "2":
+    elif userInput == "2":
         list_teams(data)
-    elif command == "3":
+    elif userInput == "3":
         list_countries(data)
-    elif command == "4":
+    elif userInput == "4":
         team = input("team: ")
         list_players_in_team(data, team)
-    elif command == "5":
+    elif userInput == "5":
         country = input("country: ")
         list_players_from_country(data, country)
-    elif command == "6":
+    elif userInput == "6":
         n = int(input("how many: "))
         list_most_points(data, n)
-    elif command == "7":
+    elif userInput == "7":
         n = int(input("how many: "))
         list_most_goals(data, n)
     else:
-        print("Invalid command. Please try again.")
+        print("Invalid userInput. Please try again.")
