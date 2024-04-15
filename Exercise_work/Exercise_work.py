@@ -1,11 +1,8 @@
 # File name:    Exercise_work.py
 # Author:       Eerik Vainio
-# Description:  
+# Description:  A sports tracker application.
 
-import keyboard
 import os
-import datetime
-import time
 import pickle
 
 class Workout:
@@ -13,7 +10,7 @@ class Workout:
         self.duration = self.date = self.distance = self.avgBpm = self.topBpm = 0
 
     def __str__(self):
-        return(f"{self.name : <15}{self.date[6:8]+'.'+self.date[4:6]+'.'+self.date[:4] : >15}{self.duration[:2]+'h '+self.duration[3:4]+'m '+self.duration[5:6]+'s' : >15}{self.distance+'m' : >15}{self.avgBpm : >10}{self.topBpm : >10}") 
+        return(f"{self.name : <15}{self.date[6:8]+'.'+self.date[4:6]+'.'+self.date[:4] : >15}{self.duration[:2]+'h '+self.duration[3:4]+'m '+self.duration[5:6]+'s' : >15}{self.distance+'m' : >15}{self.avgBpm : >15}{self.topBpm : >15}") 
 
     def SetDate(self, date):
         self.date = date.replace('-', '')
@@ -131,9 +128,12 @@ class Workouts:
             input('\nPress Enter to continue...')
 
     def ListWorkoutsDate(self, filter, descending):
-        print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >10}{'Top BPM' : >10}") 
-
         descending = not descending
+
+        if descending:
+            print(f"{'Name' : <15}{'Date v' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+        else:
+            print(f"{'Name' : <15}{'Date ^' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.date), reverse=descending)
         for x in newList:
@@ -144,7 +144,10 @@ class Workouts:
                     print(x)
 
     def ListWorkoutsDuration(self, filter, descending):
-        print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >10}{'Top BPM' : >10}")
+        if descending:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration v' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+        else:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration ^' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.duration), reverse=descending)
         for x in newList:
@@ -155,7 +158,10 @@ class Workouts:
                     print(x)
     
     def ListWorkoutsDistance(self, filter, descending):
-        print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >10}{'Top BPM' : >10}")
+        if descending:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance v' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+        else:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance ^' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.distance), reverse=descending)
         for x in newList:
@@ -166,7 +172,10 @@ class Workouts:
                     print(x)
 
     def ListWorkoutsAvgBpm(self, filter, descending):
-        print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >10}{'Top BPM' : >10}")
+        if descending:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM v' : >15}{'Top BPM' : >15}")
+        else:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM ^' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.avgBpm), reverse=descending)
         for x in newList:
@@ -177,7 +186,10 @@ class Workouts:
                     print(x)
 
     def ListWorkoutsTopBpm(self, filter, descending):
-        print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >10}{'Top BPM' : >10}")
+        if descending:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM v' : >15}")
+        else:
+            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM ^' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.topBpm), reverse=descending)
         for x in newList:
@@ -192,7 +204,8 @@ def AskDate():
         date = input('Set the date of the workout (YYYY-MM-DD): ')
         if len(date) == 10:
             if date[:3].isnumeric() and date[4] == "-" and date[5:6].isnumeric() and date[7] == "-" and date[8:].isnumeric():
-                break
+                if int(date[:3]) > 0 and int(date[:3]) <= 2024 and int(date[5:6]) > 0 and int(date[5:6]) <= 12 and int(date[8:]) > 0 and int(date[8:]) <= 31:
+                    break
         print(f'"{date}" is not a valid date in the format YYYY-MM-DD')
     return(date)
 
@@ -201,7 +214,8 @@ def AskDuration():
         duration = input('Set a duration of the workout (HH-MM-SS): ')
         if len(duration) == 8:
             if duration[:1].isnumeric() and duration[2] == "-" and duration[3:4].isnumeric() and duration[5] == "-" and duration[6:].isnumeric():
-                break
+                if int(duration[:1]) >= 0 and int(duration[3:4]) >= 0 and int(duration[3:4]) < 60 and int(duration[6:]) >= 0 and int(duration[6:]) < 60:
+                    break
         print(f'"{duration}" is not a valid duration')
     return(duration)
 
@@ -273,7 +287,6 @@ def AddWorkout():
                     print(f'Adding a workout: {workoutUserInput}\n')
                 workouts.listOfWorkouts.append(OtherWorkout(workoutUserInput))
 
-
         workouts.listOfWorkouts[-1].SetDate(AskDate())
 
         workouts.listOfWorkouts[-1].SetDuration(AskDuration())
@@ -304,14 +317,6 @@ def AddWorkout():
                 print(f'New workout data has been added for: {workoutUserInput}!')
 
         input('\nPress Enter to continue...')
-
-
-workoutTypesList = ['Running', 'Cycling', 'Swimming', 'Weight training', 'Other workout']
-workoutList = []
-mainMenuOptions = ['Add new workout', 'List workouts', 'Quit']
-activeOption = 0
-
-workouts = Workouts()
 
 def Main():
     if os.path.getsize('exerciselist.pkl') > 0:
@@ -345,6 +350,14 @@ def Main():
                 with open('exerciselist.pkl', 'wb') as outp:
                     pickle.dump(workouts.listOfWorkouts, outp, pickle.HIGHEST_PROTOCOL)
                 break
+
+
+workoutTypesList = ['Running', 'Cycling', 'Swimming', 'Weight training', 'Other workout']
+workoutList = []
+mainMenuOptions = ['Add new workout', 'List workouts', 'Quit']
+activeOption = 0
+
+workouts = Workouts()
 
 if __name__ == "__main__":
     Main()
