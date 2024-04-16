@@ -378,11 +378,10 @@ def Main():
                 break
 
 
-# Initializing variables
+# Initialize variables
 workoutTypesList = ['Running', 'Cycling', 'Swimming', 'Weight training', 'Other workout']
 workoutList = []
 mainMenuOptions = ['Add new workout', 'List workouts', 'Quit']
-activeOption = 0
 workouts = Workouts()
 
 # Main program
