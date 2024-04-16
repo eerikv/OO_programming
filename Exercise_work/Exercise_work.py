@@ -5,6 +5,7 @@
 import os
 import pickle
 
+# Exercise classes
 class Workout:
     def __init__(self):
         self.duration = self.date = self.distance = self.avgBpm = self.topBpm = '0'
@@ -53,7 +54,7 @@ class OtherWorkout(Workout):
         super().__init__()
         self.name = name
 
-
+# Workout class
 class Workouts:
     def __init__(self):
         self.listOfWorkouts = []
@@ -199,6 +200,7 @@ class Workouts:
                 if filter.casefold() in x.name.casefold():
                     print(x)
 
+# Program functions
 def AskDate():
     while True:
         date = input('Set the date of the workout (YYYY-MM-DD): ')
@@ -318,6 +320,7 @@ def AddWorkout():
 
         input('\nPress Enter to continue...')
 
+# Main program function
 def Main():
     if os.path.getsize('exerciselist.pkl') > 0:
         with open('exerciselist.pkl', 'rb') as inp:
@@ -352,12 +355,13 @@ def Main():
                 break
 
 
+# Initializing variables
 workoutTypesList = ['Running', 'Cycling', 'Swimming', 'Weight training', 'Other workout']
 workoutList = []
 mainMenuOptions = ['Add new workout', 'List workouts', 'Quit']
 activeOption = 0
-
 workouts = Workouts()
 
+# Main program
 if __name__ == "__main__":
     Main()
