@@ -1,13 +1,13 @@
 # File name:    Exercise_work.py
 # Author:       Eerik Vainio
-# Description:  A sports tracker application.
+# Description:  A workout tracker application.
 
 import os
 import pickle
 
 class Workout:
     def __init__(self):
-        self.duration = self.date = self.distance = self.avgBpm = self.topBpm = 0
+        self.duration = self.date = self.distance = self.avgBpm = self.topBpm = '0'
 
     def __str__(self):
         return(f"{self.name : <15}{self.date[6:8]+'.'+self.date[4:6]+'.'+self.date[:4] : >15}{self.duration[:2]+'h '+self.duration[3:4]+'m '+self.duration[5:6]+'s' : >15}{self.distance+'m' : >15}{self.avgBpm : >15}{self.topBpm : >15}") 
@@ -204,7 +204,7 @@ def AskDate():
         date = input('Set the date of the workout (YYYY-MM-DD): ')
         if len(date) == 10:
             if date[:3].isnumeric() and date[4] == "-" and date[5:6].isnumeric() and date[7] == "-" and date[8:].isnumeric():
-                if int(date[:3]) > 0 and int(date[:3]) <= 2024 and int(date[5:6]) > 0 and int(date[5:6]) <= 12 and int(date[8:]) > 0 and int(date[8:]) <= 31:
+                if int(date[:4]) > 0 and int(date[:4]) <= 2024 and int(date[5:7]) > 0 and int(date[5:7]) <= 12 and int(date[8:]) > 0 and int(date[8:]) <= 31:
                     break
         print(f'"{date}" is not a valid date in the format YYYY-MM-DD')
     return(date)
@@ -214,7 +214,7 @@ def AskDuration():
         duration = input('Set a duration of the workout (HH-MM-SS): ')
         if len(duration) == 8:
             if duration[:1].isnumeric() and duration[2] == "-" and duration[3:4].isnumeric() and duration[5] == "-" and duration[6:].isnumeric():
-                if int(duration[:1]) >= 0 and int(duration[3:4]) >= 0 and int(duration[3:4]) < 60 and int(duration[6:]) >= 0 and int(duration[6:]) < 60:
+                #if int(duration[:1]) >= 0 and int(duration[3:4]) >= 0 and int(duration[3:4]) < 60 and int(duration[6:]) >= 0 and int(duration[6:]) < 60:
                     break
         print(f'"{duration}" is not a valid duration')
     return(duration)
@@ -312,7 +312,7 @@ def AddWorkout():
             case('2'):
                 print('New workout data has been added for: Swimming!')
             case('3'):
-                print('New workout data has been added for: Cycling!')
+                print('New workout data has been added for: Weight training!')
             case('4'):
                 print(f'New workout data has been added for: {workoutUserInput}!')
 
