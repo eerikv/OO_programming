@@ -5,7 +5,7 @@
 import os
 import pickle
 
-# Exercise classes
+# Workout classes
 class Workout:
     def __init__(self):
         self.duration = self.date = self.distance = self.avgBpm = self.topBpm = '0'
@@ -54,7 +54,6 @@ class OtherWorkout(Workout):
         super().__init__()
         self.name = name
 
-# Workout class
 class Workouts:
     def __init__(self):
         self.listOfWorkouts = []
@@ -216,7 +215,7 @@ def AskDuration():
         duration = input('Set a duration of the workout (HH-MM-SS): ')
         if len(duration) == 8:
             if duration[:1].isnumeric() and duration[2] == "-" and duration[3:4].isnumeric() and duration[5] == "-" and duration[6:].isnumeric():
-                #if int(duration[:1]) >= 0 and int(duration[3:4]) >= 0 and int(duration[3:4]) < 60 and int(duration[6:]) >= 0 and int(duration[6:]) < 60:
+                if int(duration[:1]) >= 0 and int(duration[3:4]) >= 0 and int(duration[3:4]) < 60 and int(duration[6:]) >= 0 and int(duration[6:]) < 60:
                     break
         print(f'"{duration}" is not a valid duration')
     return(duration)
