@@ -115,89 +115,116 @@ class Workouts:
 
             match(userInput):
                 case('0'):
-                    self.ListWorkoutsDate(filterUserInput, bool(int(sortingUserInput)))
+                    self.sortedList = self.ListWorkoutsDate(filterUserInput, bool(int(sortingUserInput)))
                 case('1'):
-                    self.ListWorkoutsDuration(filterUserInput, bool(int(sortingUserInput)))
+                    self.sortedList = self.ListWorkoutsDuration(filterUserInput, bool(int(sortingUserInput)))
                 case('2'):
-                    self.ListWorkoutsDistance(filterUserInput, bool(int(sortingUserInput)))
+                    self.sortedList = self.ListWorkoutsDistance(filterUserInput, bool(int(sortingUserInput)))
                 case('3'):
-                    self.ListWorkoutsAvgBpm(filterUserInput, bool(int(sortingUserInput)))
+                    self.sortedList = self.ListWorkoutsAvgBpm(filterUserInput, bool(int(sortingUserInput)))
                 case('4'):
-                    self.ListWorkoutsTopBpm(filterUserInput, bool(int(sortingUserInput)))
+                    self.sortedList = self.ListWorkoutsTopBpm(filterUserInput, bool(int(sortingUserInput)))
 
-            input('\nPress Enter to continue...')
+            print('\n0: Delete item\nQ: Exit to menu')
+            while True:
+                userInput = input('\nCommand: ')
+                if userInput == '0':
+                    while True:
+                        deleteUserInput = input('Input the id of the workout to remove: ')
+                        if deleteUserInput.isnumeric():
+                            if int(deleteUserInput) >= 0 and int(deleteUserInput) <= len(self.sortedList):
+                                print(f'Deleted {self.sortedList[int(deleteUserInput)]} succesfully.')
+                                self.listOfWorkouts.remove(self.sortedList[int(deleteUserInput)])
+                                input('\nPress Enter to continue...')
+                                break
+                        print(f'"{deleteUserInput}" is not a valid command')
+                        
+
+                elif userInput.casefold() == 'q':
+                    break
+                else:
+                    print(f'"{userInput}" is not a valid command')
+                break
 
     def ListWorkoutsDate(self, filter, descending):
         descending = not descending
 
         if descending:
-            print(f"{'Name' : <15}{'Date v' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date v' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
         else:
-            print(f"{'Name' : <15}{'Date ^' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date ^' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.date), reverse=descending)
-        for x in newList:
+        for i in range(len(newList)):
             if filter == None:
-                print(x)
+                print(f'{i : <4} {newList[i]}')
             else:
-                if filter.casefold() in x.name.casefold():
-                    print(x)
+                if filter.casefold() in newList[i].name.casefold():
+                    print(f'{i : <4} {newList[i]}')
+        return newList
 
     def ListWorkoutsDuration(self, filter, descending):
         if descending:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration v' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration v' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
         else:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration ^' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration ^' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.duration), reverse=descending)
-        for x in newList:
+        for i in range(len(newList)):
             if filter == None:
-                print(x)
+                print(f'{i : <4} {newList[i]}')
             else:
-                if filter.casefold() in x.name.casefold():
-                    print(x)
+                if filter.casefold() in newList[i].name.casefold():
+                    print(f'{i : <4} {newList[i]}')
+        return newList
     
     def ListWorkoutsDistance(self, filter, descending):
         if descending:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance v' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance v' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
         else:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance ^' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance ^' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.distance), reverse=descending)
-        for x in newList:
+        for i in range(len(newList)):
             if filter == None:
-                print(x)
+                print(f'{i : <4} {newList[i]}')
             else:
-                if filter.casefold() in x.name.casefold():
-                    print(x)
+                if filter.casefold() in newList[i].name.casefold():
+                    print(f'{i : <4} {newList[i]}')
+        return newList
 
     def ListWorkoutsAvgBpm(self, filter, descending):
         if descending:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM v' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM v' : >15}{'Top BPM' : >15}")
         else:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM ^' : >15}{'Top BPM' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM ^' : >15}{'Top BPM' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.avgBpm), reverse=descending)
-        for x in newList:
+        for i in range(len(newList)):
             if filter == None:
-                print(x)
+                print(f'{i : <4} {newList[i]}')
             else:
-                if filter.casefold() in x.name.casefold():
-                    print(x)
+                if filter.casefold() in newList[i].name.casefold():
+                    print(f'{i : <4} {newList[i]}')
+        return newList
 
     def ListWorkoutsTopBpm(self, filter, descending):
         if descending:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM v' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM v' : >15}")
         else:
-            print(f"{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM ^' : >15}")
+            print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM ^' : >15}")
 
         newList = sorted(self.listOfWorkouts, key=lambda x: int(x.topBpm), reverse=descending)
-        for x in newList:
+        for i in range(len(newList)):
             if filter == None:
-                print(x)
+                print(f'{i : <4} {newList[i]}')
             else:
-                if filter.casefold() in x.name.casefold():
-                    print(x)
+                if filter.casefold() in newList[i].name.casefold():
+                    print(f'{i : <4} {newList[i]}')
+        return newList
+
+    def RemoveWorkout(self, index):
+        pass
 
 # Program functions
 def AskDate():
