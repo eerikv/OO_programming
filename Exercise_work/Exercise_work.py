@@ -133,7 +133,7 @@ class Workouts:
                         deleteUserInput = input('Input the id of the workout to remove: ')
                         if deleteUserInput.isnumeric():
                             if int(deleteUserInput) >= 0 and int(deleteUserInput) <= len(self.sortedList):
-                                print(f'Deleted {self.sortedList[int(deleteUserInput)]} succesfully.')
+                                print(f'Deleted {self.sortedList[int(deleteUserInput)].name} succesfully.')
                                 self.listOfWorkouts.remove(self.sortedList[int(deleteUserInput)])
                                 input('\nPress Enter to continue...')
                                 break
@@ -222,9 +222,6 @@ class Workouts:
                 if filter.casefold() in newList[i].name.casefold():
                     print(f'{i : <4} {newList[i]}')
         return newList
-
-    def RemoveWorkout(self, index):
-        pass
 
 # Program functions
 def AskDate():
