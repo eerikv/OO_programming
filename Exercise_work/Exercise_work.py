@@ -6,6 +6,8 @@ import os
 import pickle
 
 # Workout classes
+
+# Class: Workout, handles individual workouts and their data
 class Workout:
     def __init__(self):
         self.duration = self.date = self.distance = self.avgBpm = self.topBpm = '0'
@@ -54,6 +56,7 @@ class OtherWorkout(Workout):
         super().__init__()
         self.name = name
 
+# Class: Workouts, handles the list of workouts and functions regarding showing the list data to the user
 class Workouts:
     def __init__(self):
         self.listOfWorkouts = []
@@ -224,6 +227,8 @@ class Workouts:
         return newList
 
 # Program functions
+
+# Asks user to set the date of the workout
 def AskDate():
     while True:
         date = input('Set the date of the workout (YYYY-MM-DD): ')
@@ -234,6 +239,7 @@ def AskDate():
         print(f'"{date}" is not a valid date in the format YYYY-MM-DD')
     return(date)
 
+# Asks user to set the duration of the workout
 def AskDuration():
     while True:
         duration = input('Set a duration of the workout (HH-MM-SS): ')
@@ -244,6 +250,7 @@ def AskDuration():
         print(f'"{duration}" is not a valid duration')
     return(duration)
 
+# Asks user to set the average BPM of the workout
 def AskAvgBpm():
     while True:
         avgBpm = input('Set the average BPM during the workout: ')
@@ -252,6 +259,7 @@ def AskAvgBpm():
         print(f'"{avgBpm} is not a valid input for the average BPM')
     return(avgBpm)
 
+# Asks user to set the top BPM of the workout
 def AskTopBpm():
     while True:
         topBpm = input('Set the top BPM during the workout: ')
@@ -260,6 +268,7 @@ def AskTopBpm():
         print(f'"{topBpm} is not a valid input for the top BPM')
     return(topBpm)
 
+# Asks user to set the distance of the workout
 def AskDistance():
     while True:
         distance = input('Set the distance of the workout (m): ')
@@ -268,6 +277,7 @@ def AskDistance():
         print(f'"{distance} is not a valid distance')
     return(distance)
 
+# Main function for the user to add a new workout
 def AddWorkout():
     os.system('cls')
 
@@ -343,6 +353,7 @@ def AddWorkout():
 
         input('\nPress Enter to continue...')
 
+# Saves the list of workouts to the .pkl file
 def SaveToFile(workouts):
     with open('exerciselist.pkl', 'wb') as outp:
         pickle.dump(workouts.listOfWorkouts, outp, pickle.HIGHEST_PROTOCOL)
