@@ -61,6 +61,7 @@ class Workouts:
     def __init__(self):
         self.listOfWorkouts = []
 
+    # Main function for outputting the list of workouts
     def ListWorkouts(self):
         os.system('cls')
 
@@ -149,6 +150,7 @@ class Workouts:
                     print(f'"{userInput}" is not a valid command')
                 break
 
+    # Function for ordering the list by date
     def ListWorkoutsDate(self, filter, descending):
         descending = not descending
 
@@ -166,6 +168,7 @@ class Workouts:
                     print(f'{i : <4} {newList[i]}')
         return newList
 
+    # Function for ordering the list by duration
     def ListWorkoutsDuration(self, filter, descending):
         if descending:
             print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration v' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
@@ -181,6 +184,7 @@ class Workouts:
                     print(f'{i : <4} {newList[i]}')
         return newList
     
+    # Function for ordering the list by distance
     def ListWorkoutsDistance(self, filter, descending):
         if descending:
             print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance v' : >15}{'Avg BPM' : >15}{'Top BPM' : >15}")
@@ -196,6 +200,7 @@ class Workouts:
                     print(f'{i : <4} {newList[i]}')
         return newList
 
+    # Function for ordering the list by average BPM
     def ListWorkoutsAvgBpm(self, filter, descending):
         if descending:
             print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM v' : >15}{'Top BPM' : >15}")
@@ -211,6 +216,7 @@ class Workouts:
                     print(f'{i : <4} {newList[i]}')
         return newList
 
+    # Function for ordering the list by top BPM
     def ListWorkoutsTopBpm(self, filter, descending):
         if descending:
             print(f"{'ID' : <5}{'Name' : <15}{'Date' : >15}{'Duration' : >15}{'Distance' : >15}{'Avg BPM' : >15}{'Top BPM v' : >15}")
