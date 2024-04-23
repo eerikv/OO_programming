@@ -343,6 +343,11 @@ def AddWorkout():
 
         input('\nPress Enter to continue...')
 
+def SaveToFile(workouts):
+    with open('exerciselist.pkl', 'wb') as outp:
+        pickle.dump(workouts.listOfWorkouts, outp, pickle.HIGHEST_PROTOCOL)
+
+
 # Main program function
 def Main():
     if os.path.getsize('exerciselist.pkl') > 0:
@@ -373,8 +378,7 @@ def Main():
             case('1'):
                 workouts.ListWorkouts()
             case('q'):
-                with open('exerciselist.pkl', 'wb') as outp:
-                    pickle.dump(workouts.listOfWorkouts, outp, pickle.HIGHEST_PROTOCOL)
+                SaveToFile(workouts)
                 break
 
 
